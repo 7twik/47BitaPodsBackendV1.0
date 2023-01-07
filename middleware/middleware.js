@@ -1,4 +1,4 @@
-const Form=require("../model/FormModel");
+const Form=require("../model/formModel");
 const Blog=require("../model/blogModel")
 exports.Formf = async (req, res, next) => {
 
