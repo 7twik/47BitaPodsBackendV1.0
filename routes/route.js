@@ -2,7 +2,7 @@
 const express = require("express");
 const app=express();
 const router = express.Router();
-const Form=require("../model/FormModel");
+const Form=require("../model/formModel");
 const {Formf ,BlogPost ,BlogGet, BlogGetP } = require("../middleware/middleware");
 
 
