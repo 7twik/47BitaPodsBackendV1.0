@@ -16,11 +16,17 @@ const formSchema = mongoose.Schema({
   Location:{
     type: String
   },
-  Days:{
-    type: Number
+  startDate:{
+    type: String
   },
-  Date:{
-    type: Date
+  endDate:{
+    type: String
+  },
+  startTime:{
+    type: String
+  },
+  endTime:{
+    type: String
   },
 },
   { timestamps: true }
