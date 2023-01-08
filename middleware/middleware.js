@@ -9,16 +9,20 @@ exports.Formf = async (req, res, next) => {
 	    const No=req.body.No;
         const Number=req.body.Number;
 	    const Location=req.body.Location;
-	    const Days = req.body.Days;
-        const Date = req.body.Date;
+        const startDate = req.body.startDate;
+        const endDate=req.body.endDate;
+        const startTime = req.body.startTime;
+        const endTime=req.body.endTime;
 
         const newForm= new Form({
             Name: Name,
             Email: Email,
             No: No,
             Location: Location,
-            Days: Days,
-            Date: Date,
+            startTime:startTime,
+            endTime: endTime,
+            startDate: startDate,
+            endDate: endDate,
             Number: Number
         });   
 	    console.log(newForm);
@@ -65,6 +69,29 @@ exports.BlogGet = async (req, res, next) => {
               },
               {
                 head:"$head",date:"$date",image:"$image",author:'$author',body:"$body"
+              }
+         );
+          console.log(orders);
+          res.status(200).json({     
+              orders
+          })
+
+        //Blog.find({}).then(foundNotes =>res.json(foundNotes));
+        next();
+    } 
+    catch (error) {
+        console.log(error);
+    }
+}
+exports.FormGet = async (req, res, next) => {
+
+    try {
+        const orders = await Form.find(
+              {
+                
+              },
+              {
+                Name:"$Name",Email:"$Email",No:"$No",Number:'$Number',Location:"$Location",startDate:"$startDate",endDate:"$endDate",startTime:"$startTime",endTime:"$endTime",
               }
          );
           console.log(orders);
