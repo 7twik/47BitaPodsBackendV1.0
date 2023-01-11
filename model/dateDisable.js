@@ -4,9 +4,14 @@ const dateSchema = mongoose.Schema({
     Location:{
         type:String
     },
-    dates:{
-        type:Array
-    }    
+    dates:[
+        {
+            startTime: String,
+            endTime: String,
+            date: Date
+        }
+    ]
+        
 });
 
 const Date = mongoose.model("testDate", dateSchema);
