@@ -14,6 +14,6 @@ const dateSchema = mongoose.Schema({
         
 });
 
-const Date = mongoose.model("testDate", dateSchema);
+const Datee = mongoose.model("testDate", dateSchema);
 
-module.exports = Date;
+module.exports = Datee;
