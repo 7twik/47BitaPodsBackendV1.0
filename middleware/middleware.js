@@ -1,6 +1,6 @@
 const Form=require("../model/formModel");
 const Blog=require("../model/blogModel");
-const Date=require("../model/dateDisable");
+const Datee=require("../model/dateDisable");
 exports.Formf = async (req, res, next) => {
 
     try {
@@ -157,7 +157,7 @@ exports.formDel = async (req, res, next) => {
 exports.dateadd = async (req, res, next) => {
     console.log(req.body.dates);
     try {
-        let orders = await Date.updateOne(
+        let orders = await Datee.updateOne(
             {
                 "Location":req.body.Location
             },
@@ -174,7 +174,7 @@ exports.dateadd = async (req, res, next) => {
 exports.dateSend = async (req, res, next) => {
     console.log(req.query);
         const name=req.query.Location;
-        Date.find({Location:name})
+        Datee.find({Location:name})
                         .then(foundNotes =>res.json(foundNotes));
         
   }
