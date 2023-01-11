@@ -1,5 +1,6 @@
 const Form=require("../model/formModel");
-const Blog=require("../model/blogModel")
+const Blog=require("../model/blogModel");
+const Date=require("../model/dateDisable");
 exports.Formf = async (req, res, next) => {
 
     try {
@@ -129,3 +130,51 @@ exports.BlogGetP = async (req, res, next) => {
         console.log(error);
     }
 }
+
+
+exports.formDel = async (req, res, next) => {
+    console.log(req.body.Name+",,"+req.body.Email);
+    try {
+        const orders = await Form.deleteOne(  
+                {
+                    "Name": req.body.Name,
+                    "Email":req.body.Email                  
+                }
+        );
+        console.log(orders);
+        res.status(200).json({     
+            orders
+        });
+
+        //Blog.find({}).then(foundNotes =>res.json(foundNotes));
+        next();
+    } 
+    catch (error) {
+        console.log(error);
+    }
+}
+
+exports.dateadd = async (req, res, next) => {
+    console.log(req.body.dates);
+    try {
+        let orders = await Date.updateOne(
+            {
+                "Location":req.body.Location
+            },
+            {
+                $push:{ "dates":{$each: req.body.dates}}
+            });
+            //next();
+        } 
+        catch (error) {
+            console.log(error);
+        }
+}
+
+exports.dateSend = async (req, res, next) => {
+    console.log(req.query);
+        const name=req.query.Location;
+        Date.find({Location:name})
+                        .then(foundNotes =>res.json(foundNotes));
+        
+  }
